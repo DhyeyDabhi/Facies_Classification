@@ -125,6 +125,11 @@ ax.tick_params(axis='y', labelsize=8)
 st.pyplot(fig)
 
 #Handle outliers
+fig = plt.figure(figsize=(30,20))
+for i,col in enumerate(['GR','ILD_log10','DeltaPHI','PHIND','PE','NM_M]):
+            plt.subplot(3,2,i+1)
+            sns.histplot(x_filled[col])
+st.pyplot(fig)
 impt_tech = st.selectbox("Handle Missing values using: ",['Median Imputation','Mean Imputation'])
 x_out_hand = replace_outliers(x_filled,method=impt_tech)
 
